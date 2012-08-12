@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/currentLocationOption"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:importantForAccessibility="yes"
+        android:paddingBottom="@dimen/padding_large"
+        android:paddingLeft="@dimen/padding_large"
+        android:paddingTop="@dimen/padding_large"
+        android:text="@string/current_location"
+        android:background="@drawable/border"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/pointOnMapOption"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/currentLocationOption"
+        android:layout_alignParentLeft="false"
+        android:layout_below="@+id/currentLocationOption"
+        android:importantForAccessibility="yes"
+        android:paddingBottom="@dimen/padding_large"
+        android:paddingLeft="@dimen/padding_large"
+        android:paddingTop="@dimen/padding_large"
+        android:text="@string/point_on_map"
+        android:background="@drawable/border"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>

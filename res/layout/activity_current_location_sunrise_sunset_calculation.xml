@@ -4,12 +4,58 @@
     android:layout_height="match_parent" >
 
     <TextView
+        android:id="@+id/dateLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:padding="@dimen/padding_medium"
-        android:text="@string/hello_world"
-        tools:context=".CurrentLocationSunriseSunsetCalcution" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/padding_large"
+        android:layout_marginTop="@dimen/padding_large"
+        android:text="@string/date"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/dateField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/dateLabel"
+        android:layout_below="@+id/dateLabel"
+        android:layout_marginBottom="@dimen/padding_medium"
+        android:ems="10"
+        android:inputType="date" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/locationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/dateField"
+        android:layout_below="@+id/dateField"
+        android:text="@string/location"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/locationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/locationLabel"
+        android:layout_below="@+id/locationLabel"
+        android:ems="10"
+        android:text="@string/current_location"
+        android:textColor="#4fa5d5"
+        android:inputType="textPostalAddress" >
+    </EditText>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/locationText"
+        android:layout_below="@+id/locationText"
+        android:layout_marginTop="@dimen/padding_large"
+        android:onClick="calculateSunriseSunset"
+        android:text="@string/calculate_sunrise_and_sunset" />
 
 </RelativeLayout>
