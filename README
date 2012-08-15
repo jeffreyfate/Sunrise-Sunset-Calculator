@@ -1,0 +1,1 @@
+This is an android application to calculate the sunrise and sunset time of any given location on the earth.  The calculation is done by using the formulae at http://williams.best.vwh.net/sunrise_sunset_algorithm.htm.  Please note that these formulae do not take into account the elevation of the place, and hence may be a little inaccurate for place much above sea level.
