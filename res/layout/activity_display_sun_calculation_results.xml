@@ -137,4 +137,22 @@
             android:layout_height="wrap_content"
             android:text="@string/_00_00" />
     </TableRow>
+    <TableRow
+        android:id="@+id/tableRowCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/countryLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/country"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_able_to_find" />
+    </TableRow>
 </TableLayout>

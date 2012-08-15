@@ -19,54 +19,65 @@ public final class R {
         public static final int border=0x7f020000;
         public static final int ic_action_search=0x7f020001;
         public static final int ic_launcher=0x7f020002;
+        public static final int map_point=0x7f020003;
+        public static final int mapicon=0x7f020004;
     }
     public static final class id {
-        public static final int button1=0x7f080004;
-        public static final int currentLocationOption=0x7f08001a;
-        public static final int dateField=0x7f080001;
-        public static final int dateLabel=0x7f080000;
-        public static final int dawnLabel=0x7f08000c;
-        public static final int dawnTime=0x7f08000d;
-        public static final int duskLabel=0x7f08000f;
-        public static final int duskTime=0x7f080010;
-        public static final int latitude=0x7f080016;
-        public static final int latitudeLabel=0x7f080015;
-        public static final int locationLabel=0x7f080002;
-        public static final int locationText=0x7f080003;
-        public static final int longitude=0x7f080019;
-        public static final int longitudeLabel=0x7f080018;
-        public static final int menu_settings=0x7f08001c;
-        public static final int pointOnMapOption=0x7f08001b;
-        public static final int sunriseLabel=0x7f080006;
-        public static final int sunriseTime=0x7f080007;
-        public static final int sunsetLabel=0x7f080009;
-        public static final int sunsetTime=0x7f08000a;
-        public static final int tableRow1=0x7f080005;
-        public static final int tableRow2=0x7f080008;
-        public static final int tableRow3=0x7f080014;
-        public static final int tableRow4=0x7f080017;
-        public static final int tableRowDawn=0x7f08000b;
-        public static final int tableRowDusk=0x7f08000e;
-        public static final int tableRowTimezone=0x7f080011;
-        public static final int timeZoneText=0x7f080013;
-        public static final int timezoneLabel=0x7f080012;
+        public static final int button1=0x7f080006;
+        public static final int country=0x7f08001e;
+        public static final int countryLabel=0x7f08001d;
+        public static final int currentLocationOption=0x7f08001f;
+        public static final int dateField=0x7f080003;
+        public static final int dateLabel=0x7f080002;
+        public static final int dawnLabel=0x7f08000e;
+        public static final int dawnTime=0x7f08000f;
+        public static final int doneButton=0x7f080001;
+        public static final int duskLabel=0x7f080011;
+        public static final int duskTime=0x7f080012;
+        public static final int latitude=0x7f080018;
+        public static final int latitudeLabel=0x7f080017;
+        public static final int locationLabel=0x7f080004;
+        public static final int locationText=0x7f080005;
+        public static final int longitude=0x7f08001b;
+        public static final int longitudeLabel=0x7f08001a;
+        public static final int mapview=0x7f080000;
+        public static final int menu_settings=0x7f080021;
+        public static final int pointOnMapOption=0x7f080020;
+        public static final int sunriseLabel=0x7f080008;
+        public static final int sunriseTime=0x7f080009;
+        public static final int sunsetLabel=0x7f08000b;
+        public static final int sunsetTime=0x7f08000c;
+        public static final int tableRow1=0x7f080007;
+        public static final int tableRow2=0x7f08000a;
+        public static final int tableRow3=0x7f080016;
+        public static final int tableRow4=0x7f080019;
+        public static final int tableRowCountry=0x7f08001c;
+        public static final int tableRowDawn=0x7f08000d;
+        public static final int tableRowDusk=0x7f080010;
+        public static final int tableRowTimezone=0x7f080013;
+        public static final int timeZoneText=0x7f080015;
+        public static final int timezoneLabel=0x7f080014;
     }
     public static final class layout {
-        public static final int activity_current_location_sunrise_sunset_calculation=0x7f030000;
-        public static final int activity_display_sun_calculation_results=0x7f030001;
-        public static final int location_type_chooser=0x7f030002;
+        public static final int activity_choose_location_from_map=0x7f030000;
+        public static final int activity_current_location_sunrise_sunset_calculation=0x7f030001;
+        public static final int activity_display_sun_calculation_results=0x7f030002;
+        public static final int location_type_chooser=0x7f030003;
     }
     public static final class menu {
-        public static final int activity_current_location_sunrise_sunset_calculation=0x7f070000;
-        public static final int activity_display_sun_calculation_results=0x7f070001;
+        public static final int activity_choose_location_from_map=0x7f070000;
+        public static final int activity_current_location_sunrise_sunset_calculation=0x7f070001;
+        public static final int activity_display_sun_calculation_results=0x7f070002;
     }
     public static final class string {
         public static final int _00_00=0x7f05000e;
         public static final int app_name=0x7f050000;
         public static final int calculate_sunrise_and_sunset=0x7f05000a;
+        public static final int country=0x7f050016;
         public static final int current_location=0x7f050007;
         public static final int date=0x7f050004;
         public static final int dawn=0x7f050011;
+        public static final int done=0x7f050015;
         public static final int dusk=0x7f050012;
         public static final int hello_world=0x7f050001;
         public static final int latitude=0x7f05000f;
@@ -74,11 +85,13 @@ public final class R {
         public static final int location_type_chooser_title=0x7f050009;
         public static final int longitude=0x7f050010;
         public static final int menu_settings=0x7f050002;
+        public static final int not_able_to_find=0x7f050017;
         public static final int point_on_map=0x7f050008;
         public static final int select_date=0x7f050006;
         public static final int sunrise=0x7f05000c;
         public static final int sunset=0x7f05000d;
         public static final int timeZone=0x7f050013;
+        public static final int title_activity_choose_location_from_map=0x7f050014;
         public static final int title_activity_current_location_sunrise_sunset_calcution=0x7f050003;
         public static final int title_activity_display_sun_calculation_results=0x7f05000b;
     }

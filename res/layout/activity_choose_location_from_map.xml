@@ -1,0 +1,31 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@android:style/Theme.NoTitleBar" >
+
+    <com.google.android.maps.MapView
+        android:id="@+id/mapview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/mapview"
+        android:apiKey="0VfmE7Y8G_31aTXmcRfyfH5cZKDEDZin6YOWyKg"
+        android:clickable="true"
+        android:enabled="true" />
+
+    <!-- android:apiKey="0VfmE7Y8G_32HWUdWNtF3tTSNpXb2lxnDhtNTfw" -->
+    <!-- debug android:apiKey="0VfmE7Y8G_31aTXmcRfyfH5cZKDEDZin6YOWyKg" -->
+
+    <Button
+        android:id="@+id/doneButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/mapview"
+        android:layout_alignRight="@id/mapview"
+        android:layout_marginBottom="50dp"
+        android:hint="@string/done"
+        android:padding="@dimen/padding_large"
+        android:text="@string/done"
+        android:visibility="invisible" />
+
+</RelativeLayout>

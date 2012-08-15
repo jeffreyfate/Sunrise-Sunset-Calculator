@@ -9,7 +9,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:importantForAccessibility="yes"
         android:paddingBottom="@dimen/padding_large"
         android:paddingLeft="@dimen/padding_large"
         android:paddingTop="@dimen/padding_large"
@@ -24,12 +23,12 @@
         android:layout_alignLeft="@+id/currentLocationOption"
         android:layout_alignParentLeft="false"
         android:layout_below="@+id/currentLocationOption"
-        android:importantForAccessibility="yes"
         android:paddingBottom="@dimen/padding_large"
         android:paddingLeft="@dimen/padding_large"
         android:paddingTop="@dimen/padding_large"
         android:text="@string/point_on_map"
         android:background="@drawable/border"
+        
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

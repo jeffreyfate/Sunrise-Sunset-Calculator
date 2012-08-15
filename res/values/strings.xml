@@ -3,7 +3,7 @@
     <string name="app_name">Sunrise Sunset Calculator</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_current_location_sunrise_sunset_calcution">Sunrise Sunset Calculation</string>
+    <string name="title_activity_current_location_sunrise_sunset_calcution">Sunrise Sunset Calculator</string>
     <string name="date">Date</string>
     <string name="location">Location</string>
     <string name="select_date">Select Date</string>
@@ -11,7 +11,7 @@
     <string name="point_on_map">Point on map</string>
     <string name="location_type_chooser_title">Select one:</string>
     <string name="calculate_sunrise_and_sunset">Calculate Sunrise and Sunset</string>
-    <string name="title_activity_display_sun_calculation_results">DisplaySunCalculationResults</string>
+    <string name="title_activity_display_sun_calculation_results">Sunrise Sunset Calculator</string>
     <string name="sunrise">Sunrise</string>
     <string name="sunset">Sunset</string>
     <string name="_00_00">--:--</string>
@@ -20,5 +20,9 @@
     <string name="dawn">Dawn</string>
     <string name="dusk">Dusk</string>
     <string name="timeZone">Time Zone</string>
+    <string name="title_activity_choose_location_from_map">Choose Location From Map</string>
+    <string name="done">Done</string>
+    <string name="country">Country</string>
+    <string name="not_able_to_find">Unable to find</string>
 
 </resources>

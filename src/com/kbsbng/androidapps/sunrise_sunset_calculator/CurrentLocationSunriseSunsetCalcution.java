@@ -32,6 +32,7 @@ import android.widget.TextView;
 
 @SuppressLint("ValidFragment")
 public class CurrentLocationSunriseSunsetCalcution extends FragmentActivity {
+	private static final int POINT_ON_MAP_ACTIVITY = 2;
 	private EditText dateField;
 	private EditText locationField;
 
@@ -41,7 +42,17 @@ public class CurrentLocationSunriseSunsetCalcution extends FragmentActivity {
 	private LocationManager locationManager;
 	private LocationListener locationListener;
 	private Location loc;
+	
+	int chosenLongitude;
+	int chosenLatitude;
+	
+	enum LocationSource {
+		MY_CURRENT_LOCATION,
+		POINT_ON_MAP
+	}
 
+	private LocationSource locationSource = LocationSource.MY_CURRENT_LOCATION;
+	
 	public static class LocationTypeDialog extends DialogFragment {
 		public static LocationTypeDialog newInstance() {
 			return new LocationTypeDialog();
@@ -67,6 +78,17 @@ public class CurrentLocationSunriseSunsetCalcution extends FragmentActivity {
 					((CurrentLocationSunriseSunsetCalcution) getActivity())
 							.handleCurrectLocationChoice();
 					getDialog().cancel();
+				}
+			});
+			
+			TextView pointOnMapText = (TextView) v.findViewById(R.id.pointOnMapOption);
+			pointOnMapText.setOnClickListener(new View.OnClickListener() {
+				
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					((CurrentLocationSunriseSunsetCalcution) getActivity())
+					.handlePointOnMapChoice();
+			getDialog().cancel();
 				}
 			});
 
@@ -154,6 +176,7 @@ public class CurrentLocationSunriseSunsetCalcution extends FragmentActivity {
 		
 	}
 
+
 	private void requestForLocation() {
 		String provider;
 		if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
@@ -176,6 +199,20 @@ public class CurrentLocationSunriseSunsetCalcution extends FragmentActivity {
 				menu);
 		return true;
 	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		switch (requestCode) {
+		case POINT_ON_MAP_ACTIVITY:
+			if (resultCode != RESULT_OK) {
+				break;
+			}
+			chosenLatitude = data.getExtras().getInt("latitude");
+			chosenLongitude = data.getExtras().getInt("longitude");
+			break;
+		}
+	}
 
 	public void showDatePicker() {
 		final DialogFragment newFragment = new DatePickerFragment();
@@ -186,9 +223,8 @@ public class CurrentLocationSunriseSunsetCalcution extends FragmentActivity {
 		final DialogFragment newFragment = LocationTypeDialog.newInstance();
 		newFragment.show(getSupportFragmentManager(), "locationPicker");
 	}
-
-	public void calculateSunriseSunset(View v) {
-		Intent intent = new Intent(getApplicationContext(), DisplaySunCalculationResults.class);
+	
+	private void findCurrentLocation() {
 		if (loc == null) {
 			loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 		}
@@ -201,7 +237,24 @@ public class CurrentLocationSunriseSunsetCalcution extends FragmentActivity {
 		if (loc == null) {
 			return;
 		}
-		intent.putExtra("location", loc);
+	}
+
+	public void calculateSunriseSunset(View v) {
+		Intent intent = new Intent(getApplicationContext(), DisplaySunCalculationResults.class);
+		double longitude, latitude;
+		
+		if (locationSource == LocationSource.MY_CURRENT_LOCATION) {
+			findCurrentLocation();
+			longitude = loc.getLongitude();
+			latitude = loc.getLatitude();
+		}
+		else {
+			longitude = chosenLongitude / 1E6;
+			latitude = chosenLatitude / 1E6;
+		}
+		
+		intent.putExtra("longitude", longitude);
+		intent.putExtra("latitude", latitude);
 		intent.putExtra("day", day);
 		intent.putExtra("month", month);
 		intent.putExtra("year", year);
@@ -209,6 +262,7 @@ public class CurrentLocationSunriseSunsetCalcution extends FragmentActivity {
 	}
 
 	void handleCurrectLocationChoice() {
+		locationSource = LocationSource.MY_CURRENT_LOCATION;
 		locationField.setText("My Current Location");
 		requestForLocation();
 		View focusSearch = locationField.focusSearch(View.FOCUS_FORWARD);
@@ -216,6 +270,14 @@ public class CurrentLocationSunriseSunsetCalcution extends FragmentActivity {
 			focusSearch.requestFocus();
 		}
 	}
+	protected void handlePointOnMapChoice() {
+		locationSource = LocationSource.POINT_ON_MAP;
+		locationField.setText("Point on map");
+		Intent intent = new Intent(getApplicationContext(), ChooseLocationFromMap.class);
+		startActivityForResult(intent, POINT_ON_MAP_ACTIVITY);
+	}
+	
+	
 
 	private void updateDate() {
 		SimpleDateFormat format = new SimpleDateFormat("MMM dd, yyyy");
