@@ -1,14 +1,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="wrap_content" >
+
+    <com.google.ads.AdView
+        android:id="@+id/mainAdView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="a1502fe13c94a38"
+        ads:loadAdOnCreate="true"
+        ads:testDevices="TEST_EMULATOR, 304D19322A0A892F"
+        android:minHeight="60dp" />
 
     <TextView
         android:id="@+id/dateLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentTop="false"
+        android:layout_below="@+id/mainAdView"
         android:layout_marginLeft="@dimen/padding_large"
         android:layout_marginTop="@dimen/padding_large"
         android:text="@string/date"
@@ -23,8 +35,6 @@
         android:layout_marginBottom="@dimen/padding_medium"
         android:ems="10"
         android:inputType="date" >
-
-        <requestFocus />
     </EditText>
 
     <TextView
@@ -43,9 +53,9 @@
         android:layout_alignLeft="@+id/locationLabel"
         android:layout_below="@+id/locationLabel"
         android:ems="10"
+        android:inputType="textPostalAddress"
         android:text="@string/current_location"
-        android:textColor="#4fa5d5"
-        android:inputType="textPostalAddress" >
+        android:textColor="#4fa5d5" >
     </EditText>
 
     <Button

@@ -24,5 +24,19 @@
     <string name="done">Done</string>
     <string name="country">Country</string>
     <string name="not_able_to_find">Unable to find</string>
+    <string name="no_sun_rise_on_given_date">No sun rise on given date</string>
+    <string name="no_sunset_on_given_date">No sunset on given date</string>
+    <string name="locality">Locality</string>
+    <string name="address">Address</string>
+    <string name="no_dawn_on_given_date">No dawn on given date</string>
+    <string name="no_dusk_on_given_date">No dusk on given date</string>
+    <string name="no_nautical_dawn_on_given_date">No nautical dawn on given date</string>
+    <string name="no_nautical_dusk_on_given_date">No nautical dusk on given date</string>
+    <string name="no_astro_dawn_on_given_date">No astrological dawn on given date</string>
+    <string name="no_astro_dusk_on_given_date">No astrological dusk on given date</string>
+    <string name="nauticalDusk">Nautical Dusk</string>
+    <string name="astroDusk">Astrological Dusk</string>
+    <string name="nauticalDawn">Nautical Dawn</string>
+    <string name="astroDawn">Astrological Dawn</string>
 
 </resources>

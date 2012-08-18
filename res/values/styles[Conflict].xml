@@ -1,0 +1,9 @@
+<resources>
+
+    <style name="AppTheme" parent="android:Theme.Holo.Light" />
+
+    <style name="mapView" parent="android:Theme.Black.NoTitleBar">
+        <item name="android:gravity">center</item>
+    </style>
+
+</resources>

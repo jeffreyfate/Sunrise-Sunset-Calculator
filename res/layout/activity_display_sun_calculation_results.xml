@@ -1,158 +1,254 @@
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/padding_large" >
+    android:layout_height="wrap_content" >
 
-    <TableRow
-        android:id="@+id/tableRow1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+    <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*" >
+
+        <com.google.ads.AdView
+            android:id="@+id/displayResultAdView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            ads:adSize="BANNER"
+            ads:adUnitId="a1502fe13c94a38"
+            ads:loadAdOnCreate="true"
+            ads:testDevices="TEST_EMULATOR, 304D19322A0A892F"
+            android:minHeight="60dp" />
 
         <TextView
             android:id="@+id/sunriseLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
             android:text="@string/sunrise"
-            android:minWidth="10dip"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/sunriseTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_00_00" />
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRow2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+            android:layout_margin="1dp"
+            android:paddingLeft="@dimen/padding_medium"
+            android:text="@string/_00_00"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/sunsetLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
             android:text="@string/sunset"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/sunsetTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_00_00" />
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRowDawn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
+            android:text="@string/_00_00"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/dawnLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
             android:text="@string/dawn"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/dawnTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_00_00" />
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/tableRowDusk"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
+            android:text="@string/_00_00"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/duskLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
             android:text="@string/dusk"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/duskTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_00_00" />
-    </TableRow>
-    
-    <TableRow
-        android:id="@+id/tableRowTimezone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
+            android:text="@string/_00_00"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/nauticalDawnLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
+            android:text="@string/nauticalDawn"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/nauticalDawnTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
+            android:text="@string/_00_00"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/nauticalDuskLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
+            android:text="@string/nauticalDusk"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/nauticalDuskTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
+            android:text="@string/_00_00"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/astroDawnLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
+            android:text="@string/astroDawn"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/astroDawnTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
+            android:text="@string/_00_00"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/astroDuskLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
+            android:text="@string/astroDusk"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/astroDuskTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
+            android:text="@string/_00_00"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/timezoneLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
             android:text="@string/timeZone"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/timeZoneText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_00_00" />
-    </TableRow>
-    
-    <TableRow
-        android:id="@+id/tableRow3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
+            android:text="@string/_00_00"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/latitudeLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
             android:text="@string/latitude"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/latitude"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_00_00" />
-    </TableRow>
-    
-    <TableRow
-        android:id="@+id/tableRow4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
+            android:text="@string/_00_00"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/longitudeLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
             android:text="@string/longitude"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/longitude"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_00_00" />
-    </TableRow>
-    <TableRow
-        android:id="@+id/tableRowCountry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
+            android:text="@string/_00_00"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/countryLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/country"
+            android:paddingLeft="@dimen/padding_medium"
+            android:layout_margin="1dp"
+            android:text="@string/address"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/country"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/not_able_to_find" />
-    </TableRow>
-</TableLayout>
+            android:layout_margin="1dp"
+            android:layout_marginBottom="@dimen/padding_large"
+            android:paddingLeft="@dimen/padding_medium"
+            android:text="@string/not_able_to_find"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </TableLayout>
+
+</ScrollView>

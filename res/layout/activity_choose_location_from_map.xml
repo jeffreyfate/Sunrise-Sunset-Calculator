@@ -2,14 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@android:style/Theme.NoTitleBar" >
+    android:theme="@android:style/Theme.Black.NoTitleBar" >
 
     <com.google.android.maps.MapView
         android:id="@+id/mapview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/mapview"
-        android:apiKey="0VfmE7Y8G_31aTXmcRfyfH5cZKDEDZin6YOWyKg"
+        android:apiKey="0VfmE7Y8G_32HWUdWNtF3tTSNpXb2lxnDhtNTfw"
         android:clickable="true"
         android:enabled="true" />
 
@@ -26,6 +26,7 @@
         android:hint="@string/done"
         android:padding="@dimen/padding_large"
         android:text="@string/done"
+        android:textStyle="bold"
         android:visibility="invisible" />
 
 </RelativeLayout>

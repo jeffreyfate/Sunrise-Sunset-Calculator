@@ -1,19 +1,20 @@
 package com.kbsbng.androidapps.sunrise_sunset_calculator;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.TimeZone;
+import java.lang.ref.WeakReference;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 
-import com.kbsbng.utils.SunriseSunsetCalculation;
-
-import android.location.Address;
-import android.location.Geocoder;
-import android.os.Bundle;
 import android.app.Activity;
-import android.text.format.DateFormat;
-import android.util.Log;
+import android.app.ProgressDialog;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.Menu;
 import android.widget.TextView;
+
+import com.google.ads.AdRequest;
+import com.google.ads.AdView;
+import com.kbsbng.utils.SunriseSunsetCalculation;
 
 public class DisplaySunCalculationResults extends Activity {
 
@@ -28,93 +29,175 @@ public class DisplaySunCalculationResults extends Activity {
 	private TextView longitudeText;
 	private TextView dawnText;
 	private TextView duskText;
+	private TextView nauticalDawnText;
+	private TextView nauticalDuskText;
+	private TextView astroDawnText;
+	private TextView astroDuskText;
 	private TextView timeZoneText;
 	private TextView countryText;
-	private double longitude;
-	private double latitude;
+	private ProgressDialog progressDialog;
+	private TimeZoneHandler timeZoneHandler;
+	private AdView adView;
+
+	static class TimeZoneHandler extends Handler {
+
+		private final WeakReference<DisplaySunCalculationResults> displaySunCalculationResults;
+
+		TimeZoneHandler(
+				DisplaySunCalculationResults displaySunCalculationResults) {
+			this.displaySunCalculationResults = new WeakReference<DisplaySunCalculationResults>(
+					displaySunCalculationResults);
+		}
+
+		@Override
+		public void handleMessage(final Message msg) {
+			final DisplaySunCalculationResults displaySunCalculationResults = this.displaySunCalculationResults
+					.get();
+			final DateFormat dateFormat = new SimpleDateFormat("hh:mm a zzz");
+			if (SelectedLocation.timezone != null) {
+				dateFormat.setTimeZone(SelectedLocation.timezone);
+			}
+			
+			displaySunCalculationResults.populateTimes(dateFormat);
+
+			displaySunCalculationResults.progressDialog.dismiss();
+			displaySunCalculationResults.showLocationGeoDetails();
+		}
+	}
 
 	@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Bundle extras = getIntent().getExtras(); 
-        longitude = extras.getDouble("longitude");
-        latitude = extras.getDouble("latitude");
-        year = extras.getInt("year");
-        month = extras.getInt("month");
-        day = extras.getInt("day");
-        sunriseSunsetCalculation = new SunriseSunsetCalculation(day, month, year, longitude, latitude);
-        sunriseSunsetCalculation.calculateOfficialSunriseSunset();
-        sunriseSunsetCalculation.calculateCivilSunriseSunset();
-        
-        setContentView(R.layout.activity_display_sun_calculation_results);
-        sunriseTime = (TextView) findViewById(R.id.sunriseTime);
-        sunsetTime = (TextView) findViewById(R.id.sunsetTime);
-        dawnText = (TextView) findViewById(R.id.dawnTime);
-        duskText = (TextView) findViewById(R.id.duskTime);
-        latitudeText = (TextView) findViewById(R.id.latitude);
-        longitudeText = (TextView) findViewById(R.id.longitude);
-        timeZoneText = (TextView) findViewById(R.id.timeZoneText);
-        countryText = (TextView) findViewById(R.id.country);
-        
-        Geocoder geocoder = new Geocoder(this);
-        try {
-        	List<Address> fromLocations = geocoder.getFromLocation(latitude, longitude, 1);
-        	if (fromLocations != null && fromLocations.size() != 0 ) {
-        		countryText.setText(fromLocations.get(0).getCountryName());
-        	}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-			Log.e(DisplaySunCalculationResults.class.getName(), "got io error", e);
-		}
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		Bundle extras = getIntent().getExtras();
+		year = extras.getInt("year");
+		month = extras.getInt("month");
+		day = extras.getInt("day");
+		sunriseSunsetCalculation = new SunriseSunsetCalculation(day, month,
+				year, SelectedLocation.longitude, SelectedLocation.latitude);
+		sunriseSunsetCalculation.calculateOfficialSunriseSunset();
+		sunriseSunsetCalculation.calculateCivilSunriseSunset();
+		sunriseSunsetCalculation.calculateNauticalSunriseSunset();
+		sunriseSunsetCalculation.calculateAstroSunriseSunset();
 
-        java.text.DateFormat dateFormat = DateFormat.getTimeFormat(getApplicationContext());
-        dateFormat.setTimeZone(getTimeZone());
-        
-        sunriseTime.setText(dateFormat.format(sunriseSunsetCalculation.getOfficialSunrise()));
-        sunsetTime.setText(dateFormat.format(sunriseSunsetCalculation.getOfficialSunset()));
-        dawnText.setText(dateFormat.format(sunriseSunsetCalculation.getCivilSunrise()));
-        duskText.setText(dateFormat.format(sunriseSunsetCalculation.getCivilSunset()));
-        timeZoneText.setText(dateFormat.getTimeZone().getID());
-        
-        latitudeText.setText(Double.valueOf(latitude).toString());
-        longitudeText.setText(Double.valueOf(longitude).toString());
-    }
+		setContentView(R.layout.activity_display_sun_calculation_results);
+		progressDialog = new ProgressDialog(DisplaySunCalculationResults.this);
+		progressDialog.setCancelable(false);
+		progressDialog.setTitle("Loading");
+		progressDialog.setMessage("Please wait...");
+		progressDialog.show();
 
-	private TimeZone getTimeZone() {
-		double longitudeHours = (longitude / 15);
-		String sym;
-		if (longitudeHours >= 0) {
-			sym = "+";
+		sunriseTime = (TextView) findViewById(R.id.sunriseTime);
+		sunsetTime = (TextView) findViewById(R.id.sunsetTime);
+		dawnText = (TextView) findViewById(R.id.dawnTime);
+		duskText = (TextView) findViewById(R.id.duskTime);
+		nauticalDawnText = (TextView) findViewById(R.id.nauticalDawnTime);
+		nauticalDuskText = (TextView) findViewById(R.id.nauticalDuskTime);
+		astroDawnText = (TextView) findViewById(R.id.astroDawnTime);
+		astroDuskText = (TextView) findViewById(R.id.astroDuskTime);
+		latitudeText = (TextView) findViewById(R.id.latitude);
+		longitudeText = (TextView) findViewById(R.id.longitude);
+		timeZoneText = (TextView) findViewById(R.id.timeZoneText);
+		countryText = (TextView) findViewById(R.id.country);
+		
+		timeZoneHandler = new TimeZoneHandler(this);
+		new Thread(new Runnable() {
+			public void run() {
+				while (SelectedLocation.timezone == null) {
+					try {
+						Thread.sleep(250);
+					} catch (InterruptedException e) {
+						break;
+					}
+				}
+				timeZoneHandler.sendMessage(new Message());
+			}
+		}).start();
+
+		showLocationGeoDetails();
+
+		latitudeText.setText(Double.valueOf(SelectedLocation.latitude).toString());
+		longitudeText.setText(Double.valueOf(SelectedLocation.longitude).toString());
+		
+		adView = (AdView) this.findViewById(R.id.displayResultAdView);
+		adView.loadAd(new AdRequest());
+	}
+
+	private void showLocationGeoDetails() {
+		if (SelectedLocation.address != null) {
+			countryText.setText(SelectedLocation.getAddress());
 		} else {
-			sym = "-";
-			longitudeHours *= (-1);
+			countryText.setText(R.string.not_able_to_find);
 		}
-		double gmtOffsetHours = Math.round(longitudeHours * 2) / 2.0;
-		String gmtOffsetMinStr;
-		if (gmtOffsetHours % 1 == 0) {
-			gmtOffsetMinStr = "00";
-		}
-		else {
-			gmtOffsetMinStr = "30";
-		}
-		String gmtOffsetHoursStr;
-		gmtOffsetHours =  Math.floor(gmtOffsetHours);
-		if (gmtOffsetHours < 10) {
-			gmtOffsetHoursStr = "0" + (int)gmtOffsetHours;
-		}
-		else {
-			gmtOffsetHoursStr = String.valueOf((int)gmtOffsetHours);
-		}
-		Log.e("test", "GMT" + sym + gmtOffsetHoursStr+ ":" + gmtOffsetMinStr);
-		return TimeZone.getTimeZone("GMT" + sym + gmtOffsetHoursStr+ ":" + gmtOffsetMinStr);
+	}
 
+	private void populateTimes(final DateFormat dateFormat) {
+		final boolean doesSunRise = sunriseSunsetCalculation.doesSunRise();
+		final boolean doesSunSet = sunriseSunsetCalculation.doesSunSet();
+		if (doesSunRise && doesSunSet) {
+			sunriseTime.setText(dateFormat.format(sunriseSunsetCalculation
+					.getOfficialSunrise()));
+			sunsetTime.setText(dateFormat.format(sunriseSunsetCalculation
+					.getOfficialSunset()));
+		} else if (!doesSunRise) {
+			sunriseTime.setText(R.string.no_sun_rise_on_given_date);
+			sunsetTime.setText(R.string.no_sun_rise_on_given_date);
+		} else if (!doesSunSet) {
+			sunriseTime.setText(R.string.no_sunset_on_given_date);
+			sunsetTime.setText(R.string.no_sunset_on_given_date);
+		}
+		final boolean doesSunDawn = sunriseSunsetCalculation.doesSunDawn();
+		final boolean doesSunDusk = sunriseSunsetCalculation.doesSunDusk();
+		if (doesSunDawn && doesSunDusk) {
+			dawnText.setText(dateFormat.format(sunriseSunsetCalculation
+					.getCivilSunrise()));
+			duskText.setText(dateFormat.format(sunriseSunsetCalculation
+					.getCivilSunset()));
+		} else if (!doesSunDawn) {
+			dawnText.setText(R.string.no_dawn_on_given_date);
+			duskText.setText(R.string.no_dawn_on_given_date);
+		} else if (!doesSunDusk) {
+			dawnText.setText(R.string.no_dusk_on_given_date);
+			duskText.setText(R.string.no_dusk_on_given_date);
+		}
+		
+
+		final boolean doesSunNauticalDawn = sunriseSunsetCalculation.doesSunNauticalDawn();
+		final boolean doesSunNauticalDusk = sunriseSunsetCalculation.doesSunNauticalDusk();
+		if (doesSunNauticalDawn && doesSunNauticalDusk) {
+			nauticalDawnText.setText(dateFormat.format(sunriseSunsetCalculation
+					.getNauticalSunrise()));
+			nauticalDuskText.setText(dateFormat.format(sunriseSunsetCalculation
+					.getNauticalSunset()));
+		} else if (!doesSunNauticalDawn) {
+			nauticalDawnText.setText(R.string.no_nautical_dawn_on_given_date);
+			nauticalDuskText.setText(R.string.no_nautical_dawn_on_given_date);
+		} else if (!doesSunNauticalDusk) {
+			nauticalDawnText.setText(R.string.no_nautical_dusk_on_given_date);
+			nauticalDuskText.setText(R.string.no_nautical_dusk_on_given_date);
+		}
+		
+		final boolean doesSunAstroDawn = sunriseSunsetCalculation.doesSunAstroDawn();
+		final boolean doesSunAstroDusk = sunriseSunsetCalculation.doesSunAstroDusk();
+		if (doesSunAstroDawn && doesSunAstroDusk) {
+			astroDawnText.setText(dateFormat.format(sunriseSunsetCalculation
+					.getAstroSunrise()));
+			astroDuskText.setText(dateFormat.format(sunriseSunsetCalculation
+					.getAstroSunset()));
+		} else if (!doesSunAstroDawn) {
+			astroDawnText.setText(R.string.no_astro_dawn_on_given_date);
+			astroDuskText.setText(R.string.no_astro_dawn_on_given_date);
+		} else if (!doesSunAstroDusk) {
+			astroDawnText.setText(R.string.no_astro_dusk_on_given_date);
+			astroDuskText.setText(R.string.no_astro_dusk_on_given_date);
+		}
+		
+		timeZoneText.setText(dateFormat.getTimeZone().getID());
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(
-				R.menu.activity_display_sun_calculation_results, menu);
+	//	getMenuInflater().inflate(
+		//		R.menu.activity_display_sun_calculation_results, menu);
 		return true;
 	}
 

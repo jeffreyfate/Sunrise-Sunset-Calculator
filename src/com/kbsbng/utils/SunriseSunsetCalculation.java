@@ -31,6 +31,15 @@ public class SunriseSunsetCalculation {
 	private SunriseSunsetCalcResult civilSunrise;
 	private SunriseSunsetCalcResult civilSunset;
 
+
+	private SunriseSunsetCalcResult nauticalSunrise;
+	private SunriseSunsetCalcResult nauticalSunset;
+	
+	
+
+	private SunriseSunsetCalcResult astroSunrise;
+	private SunriseSunsetCalcResult astroSunset;
+	
 	public SunriseSunsetCalculation(int day, int month, int year,
 			final Location location) {
 		this.day = day;
@@ -69,6 +78,22 @@ public class SunriseSunsetCalculation {
 	
 	public Date getCivilSunset() {
 		return civilSunset.time;
+	}
+	
+	public Date getNauticalSunrise() {
+		return nauticalSunrise.time;
+	}
+	
+	public Date getNauticalSunset() {
+		return nauticalSunset.time;
+	}
+	
+	public Date getAstroSunrise() {
+		return astroSunrise.time;
+	}
+	
+	public Date getAstroSunset() {
+		return astroSunset.time;
 	}
 	
 	private double mysin(double degrees) {
@@ -184,13 +209,40 @@ public class SunriseSunsetCalculation {
 		civilSunrise = sunriseSunset[0];
 		civilSunset = sunriseSunset[1];
 	}
+	
+	public void calculateNauticalSunriseSunset() {
+		SunriseSunsetCalcResult[] sunriseSunset = calculateSunriseSunset(102);
+		nauticalSunrise = sunriseSunset[0];
+		nauticalSunset = sunriseSunset[1];
+	}
+	
+	public void calculateAstroSunriseSunset() {
+		SunriseSunsetCalcResult[] sunriseSunset = calculateSunriseSunset(108);
+		astroSunrise = sunriseSunset[0];
+		astroSunset = sunriseSunset[1];
+	}
+	
 	public boolean doesSunDawn() {
-		// TODO Auto-generated method stub
 		return civilSunrise.hourAngle <= 1;
 	}
 	
 	public boolean doesSunDusk() {
-		// TODO Auto-generated method stub
-		return civilSunrise.hourAngle >= -1;
+		return civilSunset.hourAngle >= -1;
+	}
+	
+	public boolean doesSunNauticalDawn() {
+		return nauticalSunrise.hourAngle <= 1;
+	}
+	
+	public boolean doesSunNauticalDusk() {
+		return nauticalSunset.hourAngle >= -1;
+	}
+	
+	public boolean doesSunAstroDawn() {
+		return astroSunrise.hourAngle <= 1;
+	}
+	
+	public boolean doesSunAstroDusk() {
+		return astroSunset.hourAngle >= -1;
 	}
 }

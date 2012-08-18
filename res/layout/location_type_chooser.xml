@@ -13,9 +13,9 @@
         android:paddingLeft="@dimen/padding_large"
         android:paddingTop="@dimen/padding_large"
         android:text="@string/current_location"
-        android:background="@drawable/border"
+        
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
+<!-- android:background="@drawable/border" -->
     <TextView
         android:id="@+id/pointOnMapOption"
         android:layout_width="fill_parent"
@@ -27,8 +27,6 @@
         android:paddingLeft="@dimen/padding_large"
         android:paddingTop="@dimen/padding_large"
         android:text="@string/point_on_map"
-        android:background="@drawable/border"
-        
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

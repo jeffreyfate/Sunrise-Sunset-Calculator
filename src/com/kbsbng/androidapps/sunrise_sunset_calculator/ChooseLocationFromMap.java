@@ -108,7 +108,7 @@ public class ChooseLocationFromMap extends MapActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_choose_location_from_map, menu);
+  //      getMenuInflater().inflate(R.menu.activity_choose_location_from_map, menu);
         return true;
     }
 
