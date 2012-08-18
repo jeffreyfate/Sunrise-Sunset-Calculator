@@ -9,7 +9,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         ads:adSize="BANNER"
-        ads:adUnitId="a1502fe13c94a38"
+        ads:adUnitId="1541da331a7948d7"
         ads:loadAdOnCreate="true"
         ads:testDevices="TEST_EMULATOR, 304D19322A0A892F"
         android:minHeight="60dp" />
