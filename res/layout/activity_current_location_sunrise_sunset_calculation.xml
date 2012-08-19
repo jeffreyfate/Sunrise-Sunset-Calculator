@@ -1,71 +1,81 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
 
-    <com.google.ads.AdView
-        android:id="@+id/mainAdView"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        ads:adSize="BANNER"
-        ads:adUnitId="1541da331a7948d7"
-        ads:loadAdOnCreate="true"
-        ads:testDevices="TEST_EMULATOR, 304D19322A0A892F"
-        android:minHeight="60dp" />
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-    <TextView
-        android:id="@+id/dateLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="false"
-        android:layout_below="@+id/mainAdView"
-        android:layout_marginLeft="@dimen/padding_large"
-        android:layout_marginTop="@dimen/padding_large"
-        android:text="@string/date"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <com.google.ads.AdView
+            android:id="@+id/mainAdView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            ads:adSize="BANNER"
+            ads:adUnitId="1541da331a7948d7"
+            ads:loadAdOnCreate="true"
+            ads:testDevices="TEST_EMULATOR, 304D19322A0A892F"
+            android:minHeight="60dp" />
 
-    <EditText
-        android:id="@+id/dateField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/dateLabel"
-        android:layout_below="@+id/dateLabel"
-        android:layout_marginBottom="@dimen/padding_medium"
-        android:ems="10"
-        android:inputType="date" >
-    </EditText>
+        <TextView
+            android:id="@+id/dateLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="false"
+            android:layout_below="@+id/mainAdView"
+            android:layout_marginLeft="@dimen/padding_large"
+            android:layout_marginTop="@dimen/padding_large"
+            android:text="@string/date"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+             />
 
-    <TextView
-        android:id="@+id/locationLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/dateField"
-        android:layout_below="@+id/dateField"
-        android:text="@string/location"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <EditText
+            android:id="@+id/dateField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/dateLabel"
+            android:layout_below="@+id/dateLabel"
+            android:layout_marginBottom="@dimen/padding_medium"
+            android:ems="10"
+            android:inputType="date"
+            android:focusable="false" >
+        </EditText>
 
-    <EditText
-        android:id="@+id/locationText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/locationLabel"
-        android:layout_below="@+id/locationLabel"
-        android:ems="10"
-        android:inputType="textPostalAddress"
-        android:text="@string/current_location"
-        android:textColor="#4fa5d5" >
-    </EditText>
+        <TextView
+            android:id="@+id/locationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/dateField"
+            android:layout_below="@+id/dateField"
+            android:text="@string/location"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/locationText"
-        android:layout_below="@+id/locationText"
-        android:layout_marginTop="@dimen/padding_large"
-        android:onClick="calculateSunriseSunset"
-        android:text="@string/calculate_sunrise_and_sunset" />
+        <EditText
+            android:id="@+id/locationText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/locationLabel"
+            android:layout_below="@+id/locationLabel"
+            android:ems="10"
+            android:inputType="textPostalAddress"
+            android:text="@string/current_location"
+            android:textColor="#4fa5d5"
+            android:focusable="false" >
+        </EditText>
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/locationText"
+            android:layout_below="@+id/locationText"
+            android:layout_marginTop="@dimen/padding_large"
+            android:onClick="calculateSunriseSunset"
+            android:text="@string/calculate_sunrise_and_sunset" />
+    </RelativeLayout>
+
+</ScrollView>
