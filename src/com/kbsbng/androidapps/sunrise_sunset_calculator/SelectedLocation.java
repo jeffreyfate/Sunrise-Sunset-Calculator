@@ -113,7 +113,7 @@ public class SelectedLocation {
 			HttpURLConnection urlConnection = null;
 			try {
 				urlConnection = (HttpURLConnection) url.openConnection();
-				urlConnection.setReadTimeout(5000);
+				urlConnection.setReadTimeout(8000);
 				urlConnection.setDoInput(true);
 				urlConnection.connect();
 				InputStream in = new BufferedInputStream(
