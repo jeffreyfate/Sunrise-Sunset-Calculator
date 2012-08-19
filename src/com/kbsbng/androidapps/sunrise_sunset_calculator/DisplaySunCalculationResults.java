@@ -6,10 +6,15 @@ import java.text.DateFormat;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.Menu;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.ads.AdRequest;
@@ -120,6 +125,27 @@ public class DisplaySunCalculationResults extends Activity {
 		
 		adView = (AdView) this.findViewById(R.id.displayResultAdView);
 		adView.loadAd(new AdRequest());
+		
+		RelativeLayout layout = (RelativeLayout) findViewById(R.id.resultDisplayLayout);
+		final int layoutChildrenCount = layout.getChildCount();
+		final String helpString = getString(R.string.help);
+		for (int i = 0; i< layoutChildrenCount; i++) {
+			View child = layout.getChildAt(i);
+			if (child instanceof ImageView) {
+				ImageView imageView = (ImageView)child;
+				if (imageView.getContentDescription().equals(helpString)) {
+					imageView.setOnTouchListener(new View.OnTouchListener() {
+						
+						public boolean onTouch(View v, MotionEvent event) {
+							if (event.getActionMasked() == MotionEvent.ACTION_UP) {
+								handleHelpIconClick(v);
+							}
+							return true;
+						}
+					});
+				}
+			}
+		}
 	}
 
 	private void showLocationGeoDetails() {
@@ -199,6 +225,16 @@ public class DisplaySunCalculationResults extends Activity {
 	//	getMenuInflater().inflate(
 		//		R.menu.activity_display_sun_calculation_results, menu);
 		return true;
+	}
+	
+	public void handleBackClick(final View view) {
+		finish();
+	}
+	
+	public void handleHelpIconClick(final View view) {
+		Intent intent = new Intent(getApplicationContext(), DisplayHelpActivity.class);
+		intent.putExtra("helpIconId", view.getId());
+		startActivity(intent);
 	}
 
 }

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <string name="app_name">Sunrise Sunset Calculator</string>
     <string name="hello_world">Hello world!</string>
@@ -38,5 +38,55 @@
     <string name="astroDusk">Astronomical Dusk</string>
     <string name="nauticalDawn">Nautical Dawn</string>
     <string name="astroDawn">Astronomical Dawn</string>
+    <string name="help">Help</string>
+    <string name="back">Back</string>
+    <string name="question">Question</string>
+    <string name="answer">Answer</string>
+    <string name="title_activity_display_help">FAQ</string>
+    
+    <string name="dawnHelpQuestion">What is dawn?</string>
+
+    <string-array name="dawnHelpAnswer">
+        <item name="line1">Dawn is the time before sunrise after which there is enough light for objects to be distinguishable, so that outdoor activities can commence.</item>
+        <item name="line2">In contrast, sunrise is the moment when the leading edge of the sun itself appears above the horizon.</item>
+        <item name="line3">Theoretically, it is the time at which the sun rises to 6° below the horizon.</item>
+    </string-array>
+
+    <string name="duskHelpQuestion">What is dusk?</string>
+
+    <string-array name="duskHelpAnswer">
+        <item name="line1">Dusk is the time after sunset after which artificial illumination is required to read outside.</item>
+        <item name="line2">In contrast, sunset is the point at which the earth has rotated enough that the sun is no longer visible from the local horizon.</item>
+        <item name="line3">Theoretically, it is the time at which the sun sets to 6° below the horizon.</item>
+    </string-array>
+    
+    
+    <string name="nauticalDawnHelpQuestion">What is nautical dawn?</string>
+
+    <string-array name="nauticalDawnHelpAnswer">
+        <item name="line1">Nautical dawn is the time before sunrise at which there is just enough sunlight for the horizon and some objects to be distinguishable.</item>
+        <item name="line2">Theoretically, it is the time at which the sun rises to 12° below the horizon.</item>
+    </string-array>
+
+    <string name="nauticalDuskHelpQuestion">What is nautical dusk?</string>
+
+    <string-array name="nauticalDuskHelpAnswer">
+        <item name="line1">Nautical dusk is the time after sunrise till which there is enough sunlight for the horizon and some objects to be distinguishable.</item>
+        <item name="line2">Theoretically, it is the time at which the sun sets to 12° below the horizon.</item>
+    </string-array>
+
+    <string name="astroDawnHelpQuestion">What is astrological dawn?</string>
+
+    <string-array name="astroDawnHelpAnswer">
+        <item name="line1">Astrological dawn is the time before sunrise after which the sky is no longer complety dark.</item>
+        <item name="line2">Theoretically, it is the time at which the sun rises to 18° below the horizon.</item>
+    </string-array>
+
+    <string name="astroDuskHelpQuestion">What is nautical dusk?</string>
+
+    <string-array name="astroDuskHelpAnswer">
+        <item name="line1">Astrological dusk is the time after sunrise after which the sky is completely dark.</item>
+        <item name="line2">Theoretically, it is the time at which the sun sets to 18° below the horizon.</item>
+    </string-array>
 
 </resources>
