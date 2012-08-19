@@ -1,8 +1,8 @@
 package com.kbsbng.androidapps.sunrise_sunset_calculator;
 
 import java.lang.ref.WeakReference;
-import java.text.SimpleDateFormat;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -13,6 +13,7 @@ import android.os.Message;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -129,20 +130,23 @@ public class DisplaySunCalculationResults extends Activity {
 		RelativeLayout layout = (RelativeLayout) findViewById(R.id.resultDisplayLayout);
 		final int layoutChildrenCount = layout.getChildCount();
 		final String helpString = getString(R.string.help);
+		
+		final OnTouchListener helpIconTouchListener = new View.OnTouchListener() {
+			
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getActionMasked() == MotionEvent.ACTION_UP) {
+					handleHelpIconClick(v);
+				}
+				return true;
+			}
+		};
+		
 		for (int i = 0; i< layoutChildrenCount; i++) {
 			View child = layout.getChildAt(i);
 			if (child instanceof ImageView) {
 				ImageView imageView = (ImageView)child;
 				if (imageView.getContentDescription().equals(helpString)) {
-					imageView.setOnTouchListener(new View.OnTouchListener() {
-						
-						public boolean onTouch(View v, MotionEvent event) {
-							if (event.getActionMasked() == MotionEvent.ACTION_UP) {
-								handleHelpIconClick(v);
-							}
-							return true;
-						}
-					});
+					imageView.setOnTouchListener(helpIconTouchListener);
 				}
 			}
 		}
