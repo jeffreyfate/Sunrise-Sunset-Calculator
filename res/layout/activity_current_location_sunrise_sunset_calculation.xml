@@ -31,6 +31,7 @@
             android:layout_marginTop="@dimen/padding_large"
             android:text="@string/date"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"
              />
 
         <EditText
@@ -52,6 +53,7 @@
             android:layout_alignLeft="@+id/dateField"
             android:layout_below="@+id/dateField"
             android:text="@string/location"
+            android:textStyle="bold"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText

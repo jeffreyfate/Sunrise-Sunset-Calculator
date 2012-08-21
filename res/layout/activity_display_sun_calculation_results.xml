@@ -1,349 +1,355 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
 
-    <RelativeLayout
+    <com.google.ads.AdView
+        android:id="@+id/displayResultAdView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="1541da331a7948d7"
+        ads:loadAdOnCreate="true"
+        ads:testDevices="TEST_EMULATOR, 304D19322A0A892F"
+        android:minHeight="60dp" />
+
+    <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/resultDisplayLayout" >
+        android:layout_marginTop="61dp" >
 
-        <com.google.ads.AdView
-            android:id="@+id/displayResultAdView"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            ads:adSize="BANNER"
-            ads:adUnitId="1541da331a7948d7"
-            ads:loadAdOnCreate="true"
-            ads:testDevices="TEST_EMULATOR, 304D19322A0A892F"
-            android:minHeight="60dp" />
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/resultDisplayLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/sunriseLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/displayResultAdView"
-            android:layout_gravity="top"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:paddingTop="@dimen/padding_medium"
-            android:text="@string/sunrise"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/sunriseLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:paddingLeft="@dimen/padding_medium"
+                android:paddingTop="@dimen/padding_medium"
+                android:text="@string/sunrise"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/sunriseTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/sunriseLabel"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/_00_00"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/sunriseTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sunriseLabel"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/_00_00"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/sunsetLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/sunriseTime"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/sunset"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/sunsetLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sunriseTime"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/sunset"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/sunsetTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/sunsetLabel"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/_00_00"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/sunsetTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sunsetLabel"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/_00_00"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/dawnLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/sunsetTime"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/dawn"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/dawnLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sunsetTime"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/dawn"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/dawnHelpIcon"
-            android:layout_width="@dimen/help_icon_size"
-            android:layout_height="@dimen/help_icon_size"
-            android:layout_alignTop="@+id/dawnLabel"
-            android:layout_toRightOf="@+id/dawnLabel"
-            android:contentDescription="@string/help"
-            android:onClick="handleHelpIconClick"
-            android:src="@drawable/question1" />
+            <ImageView
+                android:id="@+id/dawnHelpIcon"
+                android:layout_width="@dimen/help_icon_size"
+                android:layout_height="@dimen/help_icon_size"
+                android:layout_alignTop="@+id/dawnLabel"
+                android:layout_toRightOf="@+id/dawnLabel"
+                android:contentDescription="@string/help"
+                android:onClick="handleHelpIconClick"
+                android:src="@drawable/question1" />
 
-        <TextView
-            android:id="@+id/dawnTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/dawnLabel"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/_00_00"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/dawnTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dawnLabel"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/_00_00"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/duskLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/dawnTime"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/dusk"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/duskLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dawnTime"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/dusk"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/duskHelpIcon"
-            android:layout_width="@dimen/help_icon_size"
-            android:layout_height="@dimen/help_icon_size"
-            android:layout_alignTop="@+id/duskLabel"
-            android:layout_toRightOf="@+id/duskLabel"
-            android:contentDescription="@string/help"
-            android:onClick="handleHelpIconClick"
-            android:src="@drawable/question1" />
+            <ImageView
+                android:id="@+id/duskHelpIcon"
+                android:layout_width="@dimen/help_icon_size"
+                android:layout_height="@dimen/help_icon_size"
+                android:layout_alignTop="@+id/duskLabel"
+                android:layout_toRightOf="@+id/duskLabel"
+                android:contentDescription="@string/help"
+                android:onClick="handleHelpIconClick"
+                android:src="@drawable/question1" />
 
-        <TextView
-            android:id="@+id/duskTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/duskLabel"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/_00_00"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/duskTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/duskLabel"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/_00_00"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/nauticalDawnLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/duskTime"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/nauticalDawn"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/nauticalDawnLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/duskTime"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/nauticalDawn"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/nauticalDawnHelpIcon"
-            android:layout_width="@dimen/help_icon_size"
-            android:layout_height="@dimen/help_icon_size"
-            android:layout_alignTop="@id/nauticalDawnLabel"
-            android:layout_toRightOf="@+id/nauticalDawnLabel"
-            android:contentDescription="@string/help"
-            android:onClick="handleHelpIconClick"
-            android:src="@drawable/question1" />
+            <ImageView
+                android:id="@+id/nauticalDawnHelpIcon"
+                android:layout_width="@dimen/help_icon_size"
+                android:layout_height="@dimen/help_icon_size"
+                android:layout_alignTop="@id/nauticalDawnLabel"
+                android:layout_toRightOf="@+id/nauticalDawnLabel"
+                android:contentDescription="@string/help"
+                android:onClick="handleHelpIconClick"
+                android:src="@drawable/question1" />
 
-        <TextView
-            android:id="@+id/nauticalDawnTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/nauticalDawnLabel"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/_00_00"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/nauticalDawnTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nauticalDawnLabel"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/_00_00"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/nauticalDuskLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/nauticalDawnTime"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/nauticalDusk"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/nauticalDuskLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nauticalDawnTime"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/nauticalDusk"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/nauticalDuskHelpIcon"
-            android:layout_width="@dimen/help_icon_size"
-            android:layout_height="@dimen/help_icon_size"
-            android:layout_alignTop="@+id/nauticalDuskLabel"
-            android:layout_toRightOf="@+id/nauticalDuskLabel"
-            android:contentDescription="@string/help"
-            android:onClick="handleHelpIconClick"
-            android:src="@drawable/question1" />
+            <ImageView
+                android:id="@+id/nauticalDuskHelpIcon"
+                android:layout_width="@dimen/help_icon_size"
+                android:layout_height="@dimen/help_icon_size"
+                android:layout_alignTop="@+id/nauticalDuskLabel"
+                android:layout_toRightOf="@+id/nauticalDuskLabel"
+                android:contentDescription="@string/help"
+                android:onClick="handleHelpIconClick"
+                android:src="@drawable/question1" />
 
-        <TextView
-            android:id="@+id/nauticalDuskTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/nauticalDuskLabel"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/_00_00"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/nauticalDuskTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nauticalDuskLabel"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/_00_00"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/astroDawnLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/nauticalDuskTime"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/astroDawn"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/astroDawnLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nauticalDuskTime"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/astroDawn"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/astroDawnHelpIcon"
-            android:layout_width="@dimen/help_icon_size"
-            android:layout_height="@dimen/help_icon_size"
-            android:layout_alignTop="@+id/astroDawnLabel"
-            android:layout_toRightOf="@+id/astroDawnLabel"
-            android:contentDescription="@string/help"
-            android:onClick="handleHelpIconClick"
-            android:src="@drawable/question1" />
+            <ImageView
+                android:id="@+id/astroDawnHelpIcon"
+                android:layout_width="@dimen/help_icon_size"
+                android:layout_height="@dimen/help_icon_size"
+                android:layout_alignTop="@+id/astroDawnLabel"
+                android:layout_toRightOf="@+id/astroDawnLabel"
+                android:contentDescription="@string/help"
+                android:onClick="handleHelpIconClick"
+                android:src="@drawable/question1" />
 
-        <TextView
-            android:id="@+id/astroDawnTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/astroDawnLabel"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/_00_00"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/astroDawnTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/astroDawnLabel"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/_00_00"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/astroDuskLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/astroDawnTime"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/astroDusk"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/astroDuskLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/astroDawnTime"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/astroDusk"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/astroDuskHelpIcon"
-            android:layout_width="@dimen/help_icon_size"
-            android:layout_height="@dimen/help_icon_size"
-            android:layout_alignTop="@+id/astroDuskLabel"
-            android:layout_toRightOf="@+id/astroDuskLabel"
-            android:contentDescription="@string/help"
-            android:onClick="handleHelpIconClick"
-            android:src="@drawable/question1" />
+            <ImageView
+                android:id="@+id/astroDuskHelpIcon"
+                android:layout_width="@dimen/help_icon_size"
+                android:layout_height="@dimen/help_icon_size"
+                android:layout_alignTop="@+id/astroDuskLabel"
+                android:layout_toRightOf="@+id/astroDuskLabel"
+                android:contentDescription="@string/help"
+                android:onClick="handleHelpIconClick"
+                android:src="@drawable/question1" />
 
-        <TextView
-            android:id="@+id/astroDuskTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/astroDuskLabel"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/_00_00"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/astroDuskTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/astroDuskLabel"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/_00_00"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/timezoneLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/astroDuskTime"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/timeZone"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/timezoneLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/astroDuskTime"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/timeZone"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/timeZoneText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/timezoneLabel"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/_00_00"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/timeZoneText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/timezoneLabel"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/_00_00"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/latitudeLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/timeZoneText"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/latitude"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/latitudeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/timeZoneText"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/latitude"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/latitude"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/latitudeLabel"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/_00_00"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/latitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/latitudeLabel"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/_00_00"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/longitudeLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/latitude"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/longitude"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/longitudeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/latitude"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/longitude"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/longitude"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/longitudeLabel"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/_00_00"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/longitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/longitudeLabel"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/_00_00"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/countryLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/longitude"
-            android:layout_margin="1dp"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/address"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/countryLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/longitude"
+                android:layout_margin="1dp"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/address"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/country"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/countryLabel"
-            android:layout_margin="1dp"
-            android:layout_marginBottom="@dimen/padding_large"
-            android:paddingBottom="@dimen/padding_medium"
-            android:paddingLeft="@dimen/padding_medium"
-            android:text="@string/not_able_to_find"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/countryLabel"
+                android:layout_margin="1dp"
+                android:layout_marginBottom="@dimen/padding_large"
+                android:paddingBottom="@dimen/padding_medium"
+                android:paddingLeft="@dimen/padding_medium"
+                android:text="@string/not_able_to_find"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@+id/country"
-            android:onClick="handleBackClick"
-            android:text="@string/back" />
-    </RelativeLayout>
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/country"
+                android:onClick="handleBackClick"
+                android:text="@string/back" />
+        </RelativeLayout>
+    </ScrollView>
 
-</ScrollView>
+</FrameLayout>
