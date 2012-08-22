@@ -75,17 +75,17 @@
         <item name="line2">Theoretically, it is the time at which the sun sets to 12° below the horizon.</item>
     </string-array>
 
-    <string name="astroDawnHelpQuestion">What is astrological dawn?</string>
+    <string name="astroDawnHelpQuestion">What is astronomical dawn?</string>
 
     <string-array name="astroDawnHelpAnswer">
-        <item name="line1">Astrological dawn is the time before sunrise after which the sky is no longer complety dark.</item>
+        <item name="line1">Astronomical dawn is the time before sunrise after which the sky is no longer complety dark.</item>
         <item name="line2">Theoretically, it is the time at which the sun rises to 18° below the horizon.</item>
     </string-array>
 
-    <string name="astroDuskHelpQuestion">What is nautical dusk?</string>
+    <string name="astroDuskHelpQuestion">What is astronomical dusk?</string>
 
     <string-array name="astroDuskHelpAnswer">
-        <item name="line1">Astrological dusk is the time after sunrise after which the sky is completely dark.</item>
+        <item name="line1">Astronomical dusk is the time after sunrise after which the sky is completely dark.</item>
         <item name="line2">Theoretically, it is the time at which the sun sets to 18° below the horizon.</item>
     </string-array>
 
