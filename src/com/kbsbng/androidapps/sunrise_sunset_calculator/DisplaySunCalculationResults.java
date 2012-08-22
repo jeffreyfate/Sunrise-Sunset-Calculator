@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -63,7 +64,7 @@ public class DisplaySunCalculationResults extends Activity {
 			if (SelectedLocation.timezone != null) {
 				dateFormat.setTimeZone(SelectedLocation.timezone);
 			}
-			
+
 			displaySunCalculationResults.populateTimes(dateFormat);
 
 			displaySunCalculationResults.progressDialog.dismiss();
@@ -104,7 +105,7 @@ public class DisplaySunCalculationResults extends Activity {
 		longitudeText = (TextView) findViewById(R.id.longitude);
 		timeZoneText = (TextView) findViewById(R.id.timeZoneText);
 		countryText = (TextView) findViewById(R.id.country);
-		
+
 		timeZoneHandler = new TimeZoneHandler(this);
 		new Thread(new Runnable() {
 			public void run() {
@@ -121,18 +122,20 @@ public class DisplaySunCalculationResults extends Activity {
 
 		showLocationGeoDetails();
 
-		latitudeText.setText(Double.valueOf(SelectedLocation.latitude).toString());
-		longitudeText.setText(Double.valueOf(SelectedLocation.longitude).toString());
-		
+		latitudeText.setText(Double.valueOf(SelectedLocation.latitude)
+				.toString());
+		longitudeText.setText(Double.valueOf(SelectedLocation.longitude)
+				.toString());
+
 		adView = (AdView) this.findViewById(R.id.displayResultAdView);
 		adView.loadAd(new AdRequest());
-		
+
 		RelativeLayout layout = (RelativeLayout) findViewById(R.id.resultDisplayLayout);
 		final int layoutChildrenCount = layout.getChildCount();
 		final String helpString = getString(R.string.help);
-		
+
 		final OnTouchListener helpIconTouchListener = new View.OnTouchListener() {
-			
+
 			public boolean onTouch(View v, MotionEvent event) {
 				if (event.getActionMasked() == MotionEvent.ACTION_UP) {
 					handleHelpIconClick(v);
@@ -140,11 +143,11 @@ public class DisplaySunCalculationResults extends Activity {
 				return true;
 			}
 		};
-		
-		for (int i = 0; i< layoutChildrenCount; i++) {
+
+		for (int i = 0; i < layoutChildrenCount; i++) {
 			View child = layout.getChildAt(i);
 			if (child instanceof ImageView) {
-				ImageView imageView = (ImageView)child;
+				ImageView imageView = (ImageView) child;
 				if (imageView.getContentDescription().equals(helpString)) {
 					imageView.setOnTouchListener(helpIconTouchListener);
 				}
@@ -189,10 +192,11 @@ public class DisplaySunCalculationResults extends Activity {
 			dawnText.setText(R.string.no_dusk_on_given_date);
 			duskText.setText(R.string.no_dusk_on_given_date);
 		}
-		
 
-		final boolean doesSunNauticalDawn = sunriseSunsetCalculation.doesSunNauticalDawn();
-		final boolean doesSunNauticalDusk = sunriseSunsetCalculation.doesSunNauticalDusk();
+		final boolean doesSunNauticalDawn = sunriseSunsetCalculation
+				.doesSunNauticalDawn();
+		final boolean doesSunNauticalDusk = sunriseSunsetCalculation
+				.doesSunNauticalDusk();
 		if (doesSunNauticalDawn && doesSunNauticalDusk) {
 			nauticalDawnText.setText(dateFormat.format(sunriseSunsetCalculation
 					.getNauticalSunrise()));
@@ -205,9 +209,11 @@ public class DisplaySunCalculationResults extends Activity {
 			nauticalDawnText.setText(R.string.no_nautical_dusk_on_given_date);
 			nauticalDuskText.setText(R.string.no_nautical_dusk_on_given_date);
 		}
-		
-		final boolean doesSunAstroDawn = sunriseSunsetCalculation.doesSunAstroDawn();
-		final boolean doesSunAstroDusk = sunriseSunsetCalculation.doesSunAstroDusk();
+
+		final boolean doesSunAstroDawn = sunriseSunsetCalculation
+				.doesSunAstroDawn();
+		final boolean doesSunAstroDusk = sunriseSunsetCalculation
+				.doesSunAstroDusk();
 		if (doesSunAstroDawn && doesSunAstroDusk) {
 			astroDawnText.setText(dateFormat.format(sunriseSunsetCalculation
 					.getAstroSunrise()));
@@ -220,23 +226,31 @@ public class DisplaySunCalculationResults extends Activity {
 			astroDawnText.setText(R.string.no_astro_dusk_on_given_date);
 			astroDuskText.setText(R.string.no_astro_dusk_on_given_date);
 		}
-		
+
 		timeZoneText.setText(dateFormat.getTimeZone().getID());
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-	//	getMenuInflater().inflate(
-		//		R.menu.activity_display_sun_calculation_results, menu);
+		getMenuInflater().inflate(R.menu.common, menu);
 		return true;
 	}
-	
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		default:
+			return Sharer.share(item);
+		}
+	}
+
 	public void handleBackClick(final View view) {
 		finish();
 	}
-	
+
 	public void handleHelpIconClick(final View view) {
-		Intent intent = new Intent(getApplicationContext(), DisplayHelpActivity.class);
+		Intent intent = new Intent(getApplicationContext(),
+				DisplayHelpActivity.class);
 		intent.putExtra("helpIconId", view.getId());
 		startActivity(intent);
 	}

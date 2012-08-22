@@ -16,6 +16,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -120,10 +121,8 @@ public class CurrentLocationSunriseSunsetCalcution extends FragmentActivity {
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		//getMenuInflater().inflate(
-			//	R.menu.activity_current_location_sunrise_sunset_calculation,
-				//menu);
+	public boolean onCreateOptionsMenu(final Menu menu) {
+		getMenuInflater().inflate(R.menu.common, menu);
 		return true;
 	}
 
@@ -141,6 +140,14 @@ public class CurrentLocationSunriseSunsetCalcution extends FragmentActivity {
 			SelectedLocation.updateDetails(chosenLongitude / 1E6,
 					chosenLatitude / 1E6);
 			break;
+		}
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		default:
+			return Sharer.share(item);
 		}
 	}
 
@@ -237,4 +244,5 @@ public class CurrentLocationSunriseSunsetCalcution extends FragmentActivity {
 		c.set(year, month, day);
 		dateField.setText(format.format(c.getTime()));
 	}
+	
 }

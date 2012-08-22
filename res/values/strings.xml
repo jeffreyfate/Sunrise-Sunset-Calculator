@@ -88,5 +88,6 @@
         <item name="line1">Astronomical dusk is the time after sunrise after which the sky is completely dark.</item>
         <item name="line2">Theoretically, it is the time at which the sun sets to 18° below the horizon.</item>
     </string-array>
+    <string name="menu_share_with_facebook">Share this app</string>
 
 </resources>
