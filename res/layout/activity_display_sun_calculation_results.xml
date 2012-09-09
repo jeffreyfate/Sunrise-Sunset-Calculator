@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
     android:layout_width="match_parent"
@@ -18,7 +18,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="61dp" >
+        android:layout_marginTop="@dimen/padding_medium"
+        android:layout_below="@+id/displayResultAdView" >
 
         <RelativeLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -33,7 +34,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
                 android:paddingLeft="@dimen/padding_medium"
-                android:paddingTop="@dimen/padding_medium"
                 android:text="@string/sunrise"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textStyle="bold" />
@@ -352,4 +352,4 @@
         </RelativeLayout>
     </ScrollView>
 
-</FrameLayout>
+</RelativeLayout>
