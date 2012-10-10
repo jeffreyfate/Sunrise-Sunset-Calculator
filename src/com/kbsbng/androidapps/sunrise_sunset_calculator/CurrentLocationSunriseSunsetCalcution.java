@@ -210,7 +210,7 @@ public class CurrentLocationSunriseSunsetCalcution extends FragmentActivity {
 		locationField.setText("My Current Location");
 		loc = null;
 		requestForLocation();
-		View focusSearch = locationField.focusSearch(View.FOCUS_FORWARD);
+		View focusSearch = locationField.focusSearch(View.FOCUS_DOWN);
 		if (focusSearch != null) {
 			focusSearch.requestFocus();
 		}
@@ -232,7 +232,7 @@ public class CurrentLocationSunriseSunsetCalcution extends FragmentActivity {
 		day = d;
 		updateDate();
 		dateField.clearFocus();
-		View focusSearch = dateField.focusSearch(View.FOCUS_FORWARD);
+		View focusSearch = dateField.focusSearch(View.FOCUS_DOWN);
 		if (focusSearch != null) {
 			focusSearch.requestFocus();
 		}
